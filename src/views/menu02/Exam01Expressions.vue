@@ -13,6 +13,8 @@
       <p>가격: {{getPrice()}}</p>
       <p>판매여부: {{sale?'판매':' 품절'}}</p>
       <button class="btn btn-info btn-sm mt2" @click="changeData">변경</button>
+
+
     </div>
   </div>
 </template>
