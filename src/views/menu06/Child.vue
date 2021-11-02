@@ -2,12 +2,14 @@
 <template>
   <div class="card">
     <div class="card-header">
-      Exam06View
+      child
     </div>
     <div class="card-body">
-      <h6>params(path variable)로 데이터 얻기</h6>
-      <div>bno: {{$route.params.bno}}</div>
-      <div>bno: {{bno}}</div>
+      <h6>[Root state 읽기]</h6>
+      <p>userId 단방향 바인딩: {{$store.state.userId}}</p>
+      <p>userId 단방향 바인딩: {{$store.getters.getUserId}}</p>
+      <p>userId 양방향 바인딩: <input type="text" v-model="$store.state.userId"/></p>
+      <hr/>
     </div>
   </div>
 </template>
@@ -15,7 +17,7 @@
 <script>
 export default {
   //컴포넌트의 대표이름(devtools에 나오는 이름이다.) 이름을 정하지 않으면 파일명으로
-  name:"Exam06View",
+  name:"child",
   // 추가하고 싶은 컴포넌트를 등록
   components: {
   },
@@ -24,16 +26,7 @@ export default {
   }),
   //컴포넌트 메소드 정의
   methods:{
-  },
-  //컴포넌트가 실행될 때 실행되는 함수다.
-  created(){
-    console.log("Exam06View 컴포넌트가 생성됨");
-    console.log(this.$route);
-    console.log(this.$route.params.bno);
-  },
-  props:[
-    "bno"
-  ]
+  }
 }
 </script>
 <!-- 컴포넌트 스타일 정의 -->

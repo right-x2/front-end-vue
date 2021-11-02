@@ -6,16 +6,16 @@
     </div>
     <div class="card-body">
       <h6>범위 반복</h6>
-      <span v-for="n in 10"  :key="n" class="mr-2">
-        <img :src="require(`@/assets/photos/photo${n}.jpg`)" height="150" alt="">
+      <span v-for="n in 10"  :key="n"  class="mr-2">
+        <img :src="require(`@/assets/photos/photo${n}.jpg`)" height="150" alt="" v-if="n%2===0">
       </span>
       <hr>
       <h6>배열 항목 반복</h6>
-      <div>
-        <span v-for="photo, index in photos" :key="index">
-          <img :src="require(`@/assets/photos/${photo}`)" height="150" alt="">
+      
+        <span v-for="photo, index in photos"  :key="index">
+          <img :src="require(`@/assets/photos/${photo}`)" height="150" alt="" v-if="index<2" >
         </span>
-      </div>
+      
       <hr>
       <h6>객체 배열 항목 반복</h6>
       <table class="table table-bordered">
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import photoData from "@/data/photoData";
+import boardData from "@/data/boardData";
 export default {
   //컴포넌트의 대표이름(devtools에 나오는 이름이다.) 이름을 정하지 않으면 파일명으로
   name:"Exam05ForRepeatBinding",
@@ -49,19 +51,8 @@ export default {
   },
   //컴포넌트 데이터를 정의
   data:()=>({
-    photos: ["photo1.jpg", "photo2.jpg", "photo3.jpg"],
-    boards: [
-      {bno:1, btitle:"제목1", bwriter:"글쓴이1", bdate:"2021-08-07"},
-      {bno:2, btitle:"제목2", bwriter:"글쓴이2", bdate:"2021-08-08"},
-      {bno:3, btitle:"제목3", bwriter:"글쓴이3", bdate:"2021-08-09"}
-    ],
-    board: {
-      bno:4,
-      btitle: "제목4",
-      bcontent: "내용4",
-      bwriter: "글쓴이4",
-      bdate: "2021-08-10"
-    }
+    boards: boardData.boards,
+    photos: photoData.photos
   }),
   //컴포넌트 메소드 정의
   methods:{
